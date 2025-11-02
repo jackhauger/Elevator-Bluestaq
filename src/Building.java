@@ -1,10 +1,12 @@
 public class Building implements BuildingInterface {
     private final Elevator elevator;
     private final int floors;
+    private final BuildingDisplay display
 
     public Building(int floors) {
         this.floors = floors;
         this.elevator = new Elevator();
+        this.display = new BuildingDisplay(floors);
     }
 
     @Override
@@ -17,6 +19,6 @@ public class Building implements BuildingInterface {
     @Override
     public void step() {
         elevator.move();
-        System.out.println(elevator);
+        display.render(elevator.getCurrentFloor());
     }
 }
