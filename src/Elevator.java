@@ -7,18 +7,18 @@ public class Elevator implements ElevatorInterface {
 
     @Override
     public void move() {
-        if (targets.isEmpty()) return;
+        if (targets.isEmpty()) return;  // Already on the right floor
 
-        int target = targets.peek();
+        int target = targets.peek();  // Get the earliest made request
 
-        if (currentFloor < target){
+        if (currentFloor < target){  // Move the elevator up
             currentFloor++;
         }
-        else if (currentFloor > target){
+        else if (currentFloor > target){  // Move the elevator down
             currentFloor--;
         }
         else {
-            targets.poll();
+            targets.poll();  // Get and remove the top element
         }
     }
 

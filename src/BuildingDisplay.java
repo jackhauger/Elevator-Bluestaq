@@ -6,7 +6,6 @@ public class BuildingDisplay {
     }
 
     public void render(int elevatorFloor) {
-        clearScreen();
         for (int floor = floors - 1; floor >= 0; floor--) {
             if (floor == elevatorFloor) {
                 System.out.printf("Floor %2d | [E]%n", floor);
@@ -15,11 +14,5 @@ public class BuildingDisplay {
             }
         }
         System.out.println("----------------");
-    }
-
-    private void clearScreen() {
-        // ANSI escape codes — works on most terminals (Linux/macOS/WSL)
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
     }
 }

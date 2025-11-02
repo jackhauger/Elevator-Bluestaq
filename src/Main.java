@@ -5,13 +5,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Building building = new Building(10);
 
-        while (true) {
+        while (true) {  // Tick loop
             System.out.println("\nEnter request (source destination), or q to quit:");
             String input = scanner.nextLine().trim();
-            if (input.equalsIgnoreCase("q")) break;
+
+            if (input.equalsIgnoreCase("q")){
+                break;
+            } 
 
             String[] parts = input.split(" ");
-            if (parts.length != 2) {
+            if (parts.length != 2 || !isInteger(parts[0]) || !isInteger(parts[1])) {
                 System.out.println("Invalid input. Example: 2 7");
                 continue;
             }
@@ -28,4 +31,15 @@ public class Main {
         }
         scanner.close();
     }
+
+    private static boolean isInteger(String s) {  // Helper function for type input type safety
+    if (s == null) return false;
+    try {
+        Integer.parseInt(s);
+        return true;
+    } catch (NumberFormatException e) {
+        return false;
+    }
+}
+
 }
